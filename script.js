@@ -28,8 +28,7 @@ let operatorEnter = (op) => {
       else if (memoryPendingOperation === '*') memoryCurrentNumber *= +localOperationMemory;
       else if (memoryPendingOperation === '/') memoryCurrentNumber /= +localOperationMemory;
       else memoryCurrentNumber = +localOperationMemory;  
-    if ((memoryCurrentNumber + '').length < 9) display.value = memoryCurrentNumber;
-      else display.value = memoryCurrentNumber.toPrecision(6);
+    (memoryCurrentNumber + '').length < 9 ? display.value = memoryCurrentNumber : display.value = memoryCurrentNumber.toPrecision(6);
     memoryPendingOperation = op;
   } 
 };
