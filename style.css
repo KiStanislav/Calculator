@@ -99,7 +99,7 @@ button {
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.5) inset, 0 2px 3px rgba(0, 0, 0, 0.5) inset, 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
-.digits {
+.number-style {
   color: rgb(209, 209, 217);
   text-decoration: none;
   text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
@@ -109,11 +109,11 @@ button {
   transition: 0.2s ease-in-out;
 }
 
-.digits:hover:not(:active) {
+.number-style:hover:not(:active) {
   background: linear-gradient(rgb(193, 188, 183), rgb(104, 99, 92)) rgb(193, 188, 183);
 }
 
-.digits:active {
+.number-style:active {
   top: 1px;
   background: linear-gradient(rgb(153, 148, 143), rgb(88, 79, 72)) rgb(153, 148, 143);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.5) inset, 0 2px 3px rgba(0, 0, 0, 0.5) inset, 0 1px 1px rgba(255, 255, 255, 0.1);
