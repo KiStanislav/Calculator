@@ -24,7 +24,7 @@ let operatorEnter = (op) => {
   if (memoryNewNumber && memoryPendingOperation !== '=') display.value = memoryCurrentNumber;
     else { memoryNewNumber = true;
     if (memoryPendingOperation === '+') memoryCurrentNumber += +localOperationMemory;
-      else if (memoryPendingOperation === '-') memoryCurrentNumber -= +localOperationMemory;
+      else if (memoryPendingOperation === '-') memoryCurrentNumber = (memoryCurrentNumber*Math.pow(10, 9) - (+localOperationMemory*Math.pow(10, 9)))/Math.pow(10, 9);
       else if (memoryPendingOperation === '*') memoryCurrentNumber *= +localOperationMemory;
       else if (memoryPendingOperation === '/') memoryCurrentNumber /= +localOperationMemory;
       else memoryCurrentNumber = +localOperationMemory;  
