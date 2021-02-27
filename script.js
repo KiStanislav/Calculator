@@ -1,8 +1,8 @@
-let numbers = document.querySelectorAll('.number');
-let operations = document.querySelectorAll('.operation');
-let decimal = document.getElementById('dot');
-let clearButtons = document.querySelectorAll('.clear');
-let display = document.getElementById('display');
+const numbers = document.querySelectorAll('.number');
+const operations = document.querySelectorAll('.operation');
+const decimal = document.getElementById('dot');
+const clearButtons = document.querySelectorAll('.clear');
+const display = document.getElementById('display');
 let memoryCurrentNumber = 0;
 let memoryNewNumber = false;
 let memoryPendingOperation = '';
@@ -14,26 +14,22 @@ let operandEnter = (number) => {
     display.value = number;
     memoryNewNumber = false;
   } else display.value === '0' ? display.value = number : display.value += number;
+  display.value = display.value.substring(0,10);
 };
 
 operations.forEach((e, i) => operations[i].addEventListener('click', (e) => operatorEnter(e.target.textContent)));
 
 let operatorEnter = (op) => {
   let localOperationMemory = display.value;
-  if (memoryNewNumber && memoryPendingOperation !== '=') {
-    display.value = memoryCurrentNumber;
-  } else {
-    memoryNewNumber = true;
-    if (memoryPendingOperation === '+') {
-      memoryCurrentNumber += +localOperationMemory;
-    } else if (memoryPendingOperation === '-') {
-      memoryCurrentNumber -= +localOperationMemory;
-    } else if (memoryPendingOperation === '*') {
-      memoryCurrentNumber *= +localOperationMemory;
-    } else if (memoryPendingOperation === '/') {
-      memoryCurrentNumber /= +localOperationMemory;
-    } else memoryCurrentNumber = +localOperationMemory;   
-    display.value = memoryCurrentNumber;
+  if (memoryNewNumber && memoryPendingOperation !== '=') display.value = memoryCurrentNumber;
+    else { memoryNewNumber = true;
+    if (memoryPendingOperation === '+') memoryCurrentNumber += +localOperationMemory;
+      else if (memoryPendingOperation === '-') memoryCurrentNumber -= +localOperationMemory;
+      else if (memoryPendingOperation === '*') memoryCurrentNumber *= +localOperationMemory;
+      else if (memoryPendingOperation === '/') memoryCurrentNumber /= +localOperationMemory;
+      else memoryCurrentNumber = +localOperationMemory;  
+    if ((memoryCurrentNumber + '').length < 9) display.value = memoryCurrentNumber;
+      else display.value = memoryCurrentNumber.toPrecision(6);
     memoryPendingOperation = op;
   } 
 };
@@ -57,8 +53,6 @@ decimal.addEventListener('click', decimalPoint = () => {
   if (memoryNewNumber) {
     localDecimalMemory = '0.';
     memoryNewNumber = false;
-  } else {
-      if (localDecimalMemory.indexOf('.') === -1) localDecimalMemory += '.'; 
-  };
+  } else if (localDecimalMemory.indexOf('.') === -1) localDecimalMemory += '.'; 
   display.value = localDecimalMemory;
 }); 
