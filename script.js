@@ -48,3 +48,31 @@ let operatorEnter = (op) => {
     memoryPendingOperation = op;
   } 
 };
+
+for (i = 0; i < clearButtons.length; i++) {
+  let clearButton = clearButtons[i];
+  clearButton.addEventListener('click', (e) => clearDisplay(e.srcElement.id));
+}
+
+let clearDisplay = (id) => {
+  if (id === 'ce') {
+    display.value = '0';
+    memoryNewNumber = true;
+  } else if (id === 'c') {
+    display.value = '0';
+    memoryNewNumber = true;
+    memoryCurrentNumber = 0;
+    memoryPendingOperation = '';
+  };
+};
+
+decimal.addEventListener('click', decimalPoint = () => {
+  let localDecimalMemory = display.value;
+  if (memoryNewNumber) {
+    localDecimalMemory = '0.';
+    memoryNewNumber = false;
+  } else {
+      if (localDecimalMemory.indexOf('.') === -1) localDecimalMemory += '.'; 
+  };
+  display.value = localDecimalMemory;
+}); 
