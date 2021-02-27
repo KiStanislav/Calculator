@@ -21,14 +21,28 @@ operations.forEach((e, i) => operations[i].addEventListener('click', (e) => oper
 
 let operatorEnter = (op) => {
   let localOperationMemory = display.value;
+  const maxDigits = 10;
+  const decimalPlacesPlusPoint = 6;
   if (memoryNewNumber && memoryPendingOperation !== '=') display.value = memoryCurrentNumber;
-    else { memoryNewNumber = true;
-    if (memoryPendingOperation === '+') memoryCurrentNumber += +localOperationMemory;
-      else if (memoryPendingOperation === '-') memoryCurrentNumber = (memoryCurrentNumber*Math.pow(10, 9) - (+localOperationMemory*Math.pow(10, 9)))/Math.pow(10, 9);
-      else if (memoryPendingOperation === '*') memoryCurrentNumber *= +localOperationMemory;
-      else if (memoryPendingOperation === '/') memoryCurrentNumber /= +localOperationMemory;
-      else memoryCurrentNumber = +localOperationMemory;  
-    (memoryCurrentNumber + '').length < 9 ? display.value = memoryCurrentNumber : display.value = memoryCurrentNumber.toPrecision(6);
+    else { 
+      memoryNewNumber = true;
+    switch (memoryPendingOperation) {
+      case '+':
+        memoryCurrentNumber += +localOperationMemory;
+        break;
+      case '-':
+        memoryCurrentNumber = (memoryCurrentNumber * Math.pow(10, 9) - (+localOperationMemory * Math.pow(10, 9))) / Math.pow(10, 9);
+        break;
+      case '*':
+        memoryCurrentNumber *= +localOperationMemory;
+        break;
+      case '/':
+        memoryCurrentNumber /= +localOperationMemory;
+        break;
+      default:
+        memoryCurrentNumber = +localOperationMemory;
+    }
+    display.value = `${memoryCurrentNumber}`.length < maxDigits ? memoryCurrentNumber : memoryCurrentNumber.toPrecision(decimalPlacesPlusPoint);
     memoryPendingOperation = op;
   } 
 };
@@ -36,12 +50,10 @@ let operatorEnter = (op) => {
 clearButtons.forEach((e, i) => clearButtons[i].addEventListener('click', (e) => clearDisplay(e.srcElement.id)));
 
 let clearDisplay = (id) => {
-  if (id === 'ce') {
+  const clear = 'c';
     display.value = '0';
     memoryNewNumber = true;
-  } else if (id === 'c') {
-    display.value = '0';
-    memoryNewNumber = true;
+  if (id === clear) {
     memoryCurrentNumber = 0;
     memoryPendingOperation = '';
   };
