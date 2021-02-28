@@ -1,7 +1,7 @@
-const numbers = document.querySelectorAll('.number');
-const operations = document.querySelectorAll('.operation');
+const numbers = document.querySelectorAll('.button');
+const operations = document.querySelectorAll('.button_operation');
 const decimal = document.getElementById('dot');
-const clearButtons = document.querySelectorAll('.clear');
+const clearButtons = document.querySelectorAll('.button_clear');
 const display = document.getElementById('display');
 let memoryCurrentNumber = 0;
 let memoryNewNumber = false;
@@ -22,7 +22,7 @@ operations.forEach((e, i) => operations[i].addEventListener('click', (e) => oper
 let operatorEnter = (op) => {
   let localOperationMemory = display.value;
   const maxDigits = 10;
-  const decimalPlacesPlusPoint = 6;
+  const limitDigits = 6;
   if (memoryNewNumber && memoryPendingOperation !== '=') display.value = memoryCurrentNumber;
     else { 
       memoryNewNumber = true;
@@ -42,7 +42,7 @@ let operatorEnter = (op) => {
       default:
         memoryCurrentNumber = +localOperationMemory;
     }
-    display.value = `${memoryCurrentNumber}`.length < maxDigits ? memoryCurrentNumber : memoryCurrentNumber.toPrecision(decimalPlacesPlusPoint);
+    display.value = `${memoryCurrentNumber}`.length < maxDigits ? memoryCurrentNumber : memoryCurrentNumber.toPrecision(limitDigits);
     memoryPendingOperation = op;
   } 
 };

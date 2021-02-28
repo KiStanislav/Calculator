@@ -12,6 +12,7 @@
 
 html {
   font-size: 10px;
+  overflow: hidden;
 }
 
 body {
@@ -58,6 +59,12 @@ button {
   border-radius: 5px;
   background-color: rgb(155, 152, 143);
   cursor: pointer;
+  color: rgb(209, 209, 217);
+  text-decoration: none;
+  text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+  outline: none;
+  box-shadow: 0 1px rgba(255, 255, 255, 0.2) inset, 0 3px 5px rgba(0, 1, 6, 0.5), 0 0 1px 1px rgba(0, 1, 6, 0.2);
+  transition: 0.2s ease-in-out;
 }
 
 .calc__button {
@@ -79,62 +86,44 @@ button {
   height: auto;
 }
 
-.operation-style {
-  color: rgb(209, 209, 217);
-  text-decoration: none;
-  text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
-  outline: none;
+.button_operation {
   background: linear-gradient(rgb(118, 111, 103), rgb(59, 55, 52)) rgb(118, 111, 103);
-  box-shadow: 0 1px rgba(255, 255, 255, 0.2) inset, 0 3px 5px rgba(0, 1, 6, 0.5), 0 0 1px 1px rgba(0, 1, 6, 0.2);
-  transition: 0.2s ease-in-out;
 }
 
-.operation-style:hover:not(:active) {
+.button_operation:hover:not(:active) {
   background: linear-gradient(rgb(138, 131, 123), rgb(49, 45, 42)) rgb(138, 131, 123);
 }
 
-.operation-style:active {
+.button_operation:active {
   top: 1px;
   background: linear-gradient(rgb(98, 91, 83), rgb(39, 35, 32)) rgb(98, 91, 83);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.5) inset, 0 2px 3px rgba(0, 0, 0, 0.5) inset, 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
-.number-style {
-  color: rgb(209, 209, 217);
-  text-decoration: none;
-  text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
-  outline: none;
+.button, #dot {
   background: linear-gradient(rgb(173, 168, 163), rgb(114, 109, 102)) rgb(173, 168, 163);
-  box-shadow: 0 1px rgba(255, 255, 255, 0.2) inset, 0 3px 5px rgba(0, 1, 6, 0.5), 0 0 1px 1px rgba(0, 1, 6, 0.2);
-  transition: 0.2s ease-in-out;
 }
 
-.number-style:hover:not(:active) {
+.button:hover:not(:active), #dot:hover:not(:active) {
   background: linear-gradient(rgb(193, 188, 183), rgb(104, 99, 92)) rgb(193, 188, 183);
 }
 
-.number-style:active {
+.button:active, #dot:active {
   top: 1px;
   background: linear-gradient(rgb(153, 148, 143), rgb(88, 79, 72)) rgb(153, 148, 143);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.5) inset, 0 2px 3px rgba(0, 0, 0, 0.5) inset, 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
-.clear {
-  color: rgb(209, 209, 217);
-  text-decoration: none;
-  text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
-  outline: none;
+.button_clear {
   border-color: rgba(255, 144, 70, 0.63);
   background: linear-gradient(rgb(230, 100, 30), rgb(200, 120, 40)) rgb(230, 100, 30);
-  box-shadow: 0 1px rgba(255, 255, 255, 0.2) inset, 0 3px 5px rgba(0, 1, 6, 0.5), 0 0 1px 1px rgba(0, 1, 6, 0.2);
-  transition: 0.2s ease-in-out;
 }
 
-.clear:hover:not(:active) {
+.button_clear:hover:not(:active) {
   background: linear-gradient(rgb(240, 110, 40), rgb(190, 110, 30)) rgb(240, 110, 40);
 }
 
-.clear:active {
+.button_clear:active {
   top: 1px;
   background: linear-gradient(rgb(210, 80, 10), rgb(180, 100, 20)) rgb(210, 80, 10);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.5) inset, 0 2px 3px rgba(0, 0, 0, 0.5) inset, 0 1px 1px rgba(255, 255, 255, 0.1);
