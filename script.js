@@ -1,8 +1,11 @@
-const numbers = document.querySelectorAll('.button');
-const operations = document.querySelectorAll('.button_operation');
+const numbers = document.querySelectorAll('.button_digit');
+const operations = document.querySelectorAll('.button_operation, .button_operation_equals');
 const decimal = document.getElementById('dot');
-const clearButtons = document.querySelectorAll('.button_clear');
+const clearButtons = document.querySelectorAll('.button_clean');
+const clear = 'c';
 const display = document.getElementById('display');
+const maxDigits = 10;
+const limitDigits = 6;
 let memoryCurrentNumber = 0;
 let memoryNewNumber = false;
 let memoryPendingOperation = '';
@@ -21,8 +24,6 @@ operations.forEach((e, i) => operations[i].addEventListener('click', (e) => oper
 
 let operatorEnter = (op) => {
   let localOperationMemory = display.value;
-  const maxDigits = 10;
-  const limitDigits = 6;
   if (memoryNewNumber && memoryPendingOperation !== '=') display.value = memoryCurrentNumber;
     else { 
       memoryNewNumber = true;
@@ -50,9 +51,8 @@ let operatorEnter = (op) => {
 clearButtons.forEach((e, i) => clearButtons[i].addEventListener('click', (e) => clearDisplay(e.srcElement.id)));
 
 let clearDisplay = (id) => {
-  const clear = 'c';
-    display.value = '0';
-    memoryNewNumber = true;
+  display.value = '0';
+  memoryNewNumber = true;
   if (id === clear) {
     memoryCurrentNumber = 0;
     memoryPendingOperation = '';
